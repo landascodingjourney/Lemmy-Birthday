@@ -1,0 +1,129 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Messages</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(180deg, rgb(17, 5, 82), white);
+        overflow: hidden;
+      }
+      .message-container {
+        max-width: 600px; /* Limit container width */
+        text-align: left; /* Center align text */
+        padding: 60px;
+
+        border-radius: 10px; /* Rounded corners */
+        background-color: linear-gradient(180deg, black, white);
+      }
+      .message {
+        display: none; /* Initially hide messages */
+        margin: 10px 0;
+        color: white; /* White text for readability */
+        font-size: 18px;
+        text-align: left;
+      }
+      .header {
+        color: rgb(242, 242, 255); /* Happy Birthday message color */
+        font-size: 36px; /* Larger font size */
+        margin-bottom: 20px;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: rgba(255, 255, 255, 1);
+      }
+      img {
+        width: 250px; /* Set a specific size for the image */
+        height: 250px;
+        border: 2px solid #333;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">🎉✨HAPPY BIRTHDAY LEMMY✨🎉</div>
+    <div>
+      <img src="Lemmy birthday img.jpg" />
+    </div>
+
+    <div class="message-container" id="messages-container">
+      <p class="message">
+        Happy birthday lemmysaucebonny! Hope you have a great day, pal🤸 -Barbie
+      </p>
+      <p class="message">
+        Happy Birthday Lemmy, I hope you have a wonderful day filled with love
+        and joy, I'm proud of you and of the person you're becoming and may God
+        continue to guide you. May he always bless you and may you turn to him
+        in every path you take and may he answers all your prayers and I pray
+        Psalm 20:4 over your life. - Landa
+      </p>
+      <p class="message">
+        I will praise God with the uprightness of heart for thee, thou art the
+        most sweetest, thy love is gentle and thou art kind🌈In thy presence, I
+        am always at peace and feel safe. I could spend hours with thee, thou
+        art one of the greatest treasures the Lord hath given me. ❤ I'm really
+        proud of how you have grown in the faith, all the glory to God!Happy
+        birthday (my princess👑, my sunshine☀) -Owami
+      </p>
+    </div>
+
+    <button id="show-messages-btn">Click to Show Messages</button>
+
+    <script>
+      document
+        .getElementById("show-messages-btn")
+        .addEventListener("click", function () {
+          const messages = document.querySelectorAll(".message");
+          messages.forEach((msg) => {
+            msg.style.display = "block"; // Set display to block to show each message
+          });
+          startConfetti(); // Start the confetti effect
+        });
+
+      function startConfetti() {
+        const colors = ["#FFC700", "#C70039", "#900C3F", "#581845"];
+        for (let i = 0; i < 100; i++) {
+          createConfetti(colors);
+        }
+      }
+
+      function createConfetti(colors) {
+        const confettiPiece = document.createElement("div");
+        confettiPiece.style.position = "absolute";
+        confettiPiece.style.width = "5px";
+        confettiPiece.style.height = "5px";
+        confettiPiece.style.backgroundColor =
+          colors[Math.floor(Math.random() * colors.length)];
+        confettiPiece.style.left = Math.random() * window.innerWidth + "px";
+        confettiPiece.style.top = "0px";
+        document.body.appendChild(confettiPiece);
+
+        // Apply falling animation
+        let fallSpeed = Math.random() * 6 + 2; // Speed of falling
+        const fallInterval = setInterval(() => {
+          confettiPiece.style.top =
+            parseFloat(confettiPiece.style.top) + fallSpeed + "px";
+          if (parseFloat(confettiPiece.style.top) > window.innerHeight) {
+            clearInterval(fallInterval); // Remove confetti when it falls below the screen
+            document.body.removeChild(confettiPiece); // Clean up DOM
+          }
+        }, 20);
+      }
+    </script>
+  </body>
+</html>
